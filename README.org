@@ -1,4 +1,9 @@
-# MY PERSONAL DOOM EMACS CONFIGURATION
+#+title: MY PERSONAL DOOM EMACS CONFIGURATION
+#+author: Marcus
+#+author: marcus@r38.se
+#+attr_html: :width 30%;
+[[file:images/doomEmacsTokyoNight.svg]]
+
 This is my personal configuration of doom emacs. If you found it, don't use it. I normally push unfinished code to this git.
 
 Here be dragons...
