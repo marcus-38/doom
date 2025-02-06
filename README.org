@@ -4,4 +4,6 @@ This is my personal configuration of doom emacs. If you found it, don't use it. 
 Here be dragons...
 
 ** TODO
-[ ] Convert to literate config
+- [ ] Convert to literate config
+- [ ] Setup Elfeed
+- [ ] Setup Mu4e
