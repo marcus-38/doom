@@ -1,0 +1,2 @@
+# doom
+My doom config
