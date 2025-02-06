@@ -1,0 +1,7 @@
+# MY PERSONAL DOOM EMACS CONFIGURATION
+This is my personal configuration of doom emacs. If you found it, don't use it. I normally push unfinished code to this git.
+
+Here be dragons...
+
+** TODO
+[ ] Convert to literate config
