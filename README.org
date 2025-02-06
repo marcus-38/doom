@@ -8,6 +8,15 @@ This is my personal configuration of doom emacs. If you found it, don't use it. 
 
 Here be dragons...
 
+* One configuration file
+See [[file:config.org][config.org]] for the source configuration file with some limited commentary. Work in progress...
+
+** Generated files
+Running =doom sync= in a terminal or =SPC h r r= in emacs generates the actual configuration files read by emacs:
+- [[file:config.el][config.el]]
+- [[file:init.el][init.el]]
+- [[file:packages.el][packages.el]]
+
 ** TODO List of things to do
 - [X] Convert to literate config
 - [ ] Setup Elfeed
