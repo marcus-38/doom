@@ -294,7 +294,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -341,5 +341,6 @@
                      ("https://planet.emacslife.com/atom.xml" emacs)
                      )))
 (global-set-key (kbd "C-x w") 'elfeed)
+
 
 #+end_src
