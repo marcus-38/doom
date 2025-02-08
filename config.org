@@ -43,7 +43,7 @@ I'm currently using a Apple MacBook Pro M2 Max. If you are on other hardware you
 ** Install Brew
 Download install script for brew.
 #+begin_src bash :tangle no
-curl -fsSL curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+curl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh > install.sh
 #+end_src
 ** Check script and install if ok
 #+begin_src bash :tangle no
