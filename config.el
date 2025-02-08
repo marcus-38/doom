@@ -45,8 +45,12 @@
 (add-to-list 'default-frame-alist '(height . 100))
 (add-to-list 'default-frame-alist '(width . 170))
 
-(setq org-directory "~/Org/")
-(directory-files-recursively "~/.doom.d/" "\.org$")
+(setq org-directory "~/Org/"
+      my-agenda-dirs '("~/.doom.d")
+      org-agenda-files (mapcan (lambda (x) (directory-files-recursively
+                                            (expand-file-name x org-directory)
+                                            "\.org$"))
+                               my-agenda-dirs))
 
 ;; Elfeed
 (require 'elfeed-goodies)

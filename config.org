@@ -459,9 +459,17 @@ Move all version control code here.
 ** Org Settings
 These are my personal org settings.
 #+begin_src emacs-lisp :tangle config.el
-(setq org-directory "~/Org/")
-(directory-files-recursively "~/.doom.d/" "\.org$")
+(setq org-directory "~/Org/"
+      my-agenda-dirs '("~/.doom.d")
+      org-agenda-files (mapcan (lambda (x) (directory-files-recursively
+                                            (expand-file-name x org-directory)
+                                            "\.org$"))
+                               my-agenda-dirs))
 #+end_src
+
+#+RESULTS:
+| ~/.doom.d/config.org |
+
 ** TODO Org Capture
 ** TODO Org Tempo
 ** TODO Org Clock
