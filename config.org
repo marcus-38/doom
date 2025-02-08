@@ -460,7 +460,7 @@ Move all version control code here.
 These are my personal org settings.
 #+begin_src emacs-lisp :tangle config.el
 (setq org-directory "~/Org/"
-      my-agenda-dirs '("~/.doom.d")
+      my-agenda-dirs '("~/.doom.d") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively
                                             (expand-file-name x org-directory)
                                             "\.org$"))
