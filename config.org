@@ -20,6 +20,9 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#packagesel][=packages.el=]]
 - [[#doom-modules][Doom Modules]]
 - [[#custom-moduels][Custom Moduels]]
+  - [[#spacemacs-theme][Spacemacs-theme]]
+  - [[#elfeed-goodies][Elfeed-goodies]]
+  - [[#rustic][Rustic]]
 - [[#personal-information][Personal information]]
 - [[#ui-settings][UI Settings]]
 - [[#org][Org]]
@@ -149,10 +152,8 @@ Here be dragons...
 #+end_src
 
 * Doom Modules
+This controls which Doom modules are enabled and what order they load in. Remember to run =doom sync= (=SPC-h-r-r=) after modifying it.
 #+begin_src emacs-lisp :tangle init.el
-;; This file controls what Doom modules are enabled and what order they load
-;; in. Remember to run 'doom sync' after modifying it!
-
 ;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
 ;;      documentation. There you'll find a link to Doom's Module Index where all
 ;;      of our modules are listed, including what flags they support.
@@ -345,9 +346,27 @@ Here be dragons...
 #+end_src
 
 * Custom Moduels
+These packages are added to the configuration.
+
+** Spacemacs-theme
+Spacemacs theme is an Emacs color theme that started as a theme for [[https://github.com/syl20bnr/spacemacs][spcaemacs]]. The theme comes with dark and light variants and it should work well with 256 color terminals.
 #+begin_src emacs-lisp :tangle packages.el
 (package! spacemacs-theme)
+#+end_src
+** Elfeed-goodies
+Elfeed-goodies provides an adaptive, powerline-based header for the =*elfeed-search*= and =*elfeed-entry*= buffers, with a matching entry format. A split pane setup. A function to toggle the =*elfeed-log*= buffer in a popup window and easy customisation.
+#+begin_src emacs-lisp :tangle packages.el
 (package! elfeed-goodies)
+#+end_src
+** Rustic
+Rustic is based on [[https://github.com/rust-lang/rust-mode][rust-mode]] and provides additional features:
+- cargo popup
+- multiline error parsing
+- translation of ANSI control sequences through xterm-color
+- async org babel
+- automatic LSP configuration with eglot or lsp-mode
+- etc.
+#+begin_src emacs-lisp :tangle packages.el
 (package! rustic)
 #+end_src
 

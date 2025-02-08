@@ -13,5 +13,7 @@
 ;; Code:
 
 (package! spacemacs-theme)
+
 (package! elfeed-goodies)
+
 (package! rustic)
