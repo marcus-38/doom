@@ -46,6 +46,7 @@
 (add-to-list 'default-frame-alist '(width . 170))
 
 (setq org-directory "~/Org/")
+(directory-files-recursively "~/.doom.d/" "\.org$")
 
 ;; Elfeed
 (require 'elfeed-goodies)

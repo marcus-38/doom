@@ -460,6 +460,7 @@ Move all version control code here.
 These are my personal org settings.
 #+begin_src emacs-lisp :tangle config.el
 (setq org-directory "~/Org/")
+(directory-files-recursively "~/.doom.d/" "\.org$")
 #+end_src
 ** TODO Org Capture
 ** TODO Org Tempo
