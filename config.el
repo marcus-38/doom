@@ -20,12 +20,11 @@
 
 (setq display-line-numbers-type t)
 
-
-(setq org-directory "~/Org/")
-
 ;; Setup size of frame on startup
 (add-to-list 'default-frame-alist '(height . 100))
 (add-to-list 'default-frame-alist '(width . 170))
+
+(setq org-directory "~/Org/")
 
 ;; Elfeed
 (require 'elfeed-goodies)
