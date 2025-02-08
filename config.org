@@ -1,4 +1,5 @@
 #+title: My literate Doom Emacs Configuration
+#+author: Marcus
 
 This is my personal Doom Emacs configuration. From this org-file all the necessary configuration files are generated.
 
