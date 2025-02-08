@@ -397,7 +397,6 @@ Configuration code is tangled into config.el.
 
 #+end_src
 
-
 * Personal information
 #+begin_src emacs-lisp :tangle config.el
 (setq user-full-name "Marcus"
