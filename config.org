@@ -1,9 +1,110 @@
 #+title: My literate Doom Emacs Configuration
 
-* FILE =init.el=
+This is my personal Doom Emacs configuration. From this org-file all the necessary configuration files are generated.
+
+This file is written in [[https://leanpub.com/lit-config][literate programming style]] using [[https://orgmode.org/][org-mode]]. See [[file:init.el][init.el]], [[file:packages.el][packages.el]] and [[file:config.el][config.el]] for the generated files.
+
+* Table of Contents :TOC_4:
+- [[#references][References]]
+- [[#setup-and-install][Setup and Install]]
+  - [[#install-brew][Install Brew]]
+  - [[#check-script-and-install-if-ok][Check script and install if ok]]
+  - [[#install-terminal-apps][Install terminal Apps]]
+  - [[#install-gui-apps][Install GUI Apps]]
+  - [[#install-emacs][Install Emacs]]
+  - [[#raycast-edits][Raycast Edits]]
+- [[#file-headers][FILE HEADERS]]
+  - [[#initel][=init.el=]]
+  - [[#configel][=config.el=]]
+  - [[#packagesel][=packages.el=]]
+- [[#doom-modules][DOOM MODULES]]
+- [[#custom-modules][CUSTOM MODULES]]
+- [[#file-configel][FILE =config.el=]]
+
+* References
+This configuration relly on other people's files and from other resources. My top go to when looking for insperation and solutions are:
+
+- [[http://pages.sachachua.com/.emacs.d/Sacha.html][Sacha Chua's Emacs Configuration]]
+- [[https://www.masteringemacs.org/][Mastering Emacs]]
+- [[https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org][Doom Emacs Getting Started Guide]]
+- [[https://protesilaos.com/][Protesilaos Stavrou]]
+- [[https://www.pygopar.com/][Pygopar]]
+- [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs]]
+
+* Setup and Install
+I'm currently using a Apple MacBook Pro M2 Max. If you are on other hardware you need to adapt this configuration for your needs. This is mostly for myself when setting up a new Mac.
+
+** Install Brew
+Download install script for brew.
+#+begin_src bash :tangle no
+curl -fsSL curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+#+end_src
+** Check script and install if ok
+#+begin_src bash :tangle no
+# check install script
+vim install.sh
+
+# install brew
+/bin/bash -c install.sh
+#+end_src
+** Install terminal Apps
+#+begin_src bash :tangle no
+brew install wget \
+    git gh \
+    zsh-completions \
+    tree \
+    ripgrep fd \
+    coreutils \
+    btop \
+    starship
+#+end_src
+** Install GUI Apps
+#+begin_src bash :tangle no
+brew install --cask raycast \
+    google-chrome firefox brave-browser tor-browser \
+    iterm2 \
+    rectangle \
+    visual-studio-code \
+    vlc \
+    calibre figma \
+    imageoptim \
+    maccy \
+    sequel-ace \
+    bitwarden \
+    font-hack-nerd-font \
+    font-fira-code-nerd-font \
+    font-iosevka \
+    proton-pass \
+    prusaslicer
+#+end_src
+** Install Emacs
+#+begin_src bash :tangle no
+brew tap railwaycat/emacsport
+brew install emacs-plus --with-mailutils --with-imagemagick --with-native-comp --with-modern-papirus-icon
+osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
+#+end_src
+** Raycast Edits
+- Change ⌘-Space to open raycast instead of spotlight
+- Set ⌘-e to open Emacs
+- Set ⌘-Return to open iterm2
+
+
+* FILE HEADERS
+** =init.el=
 #+begin_src emacs-lisp :tangle init.el
 ;;; init.el -*- lexical-binding: t; -*-
+#+end_src
+** =config.el=
+#+begin_src emacs-lisp :tangle config.el
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+** =packages.el=
+#+begin_src emacs-lisp :tangle packages.el
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
 
+* DOOM MODULES
+#+begin_src emacs-lisp :tangle init.el
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 
@@ -198,18 +299,16 @@
 
 #+end_src
 
-* FILE =packages.el=
+* CUSTOM MODULES
 #+begin_src emacs-lisp :tangle packages.el
-;; -*- no-byte-compile: t; -*-
 (package! spacemacs-theme)
 (package! elfeed-goodies)
-
+(package! rustic)
+(package! rustic)
 #+end_src
 
 * FILE =config.el=
 #+begin_src emacs-lisp :tangle config.el
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
 (setq user-full-name "Marcus"
        user-mail-address "marcus@r38.se")
 
@@ -234,5 +333,25 @@
                      )))
 (global-set-key (kbd "C-x w") 'elfeed)
 
+(use-package! rustic
+  :ensure
+  :bind (:map rustic-mode-map
+              ("M-j" . lsp-ui-imenu)
+              ("M-?" . lsp-find-references)
+              ("C-c C-c l" . flycheck-list-errors)
+              ("C-c C-c a" . lsp-execute-code-action)
+              ("C-c C-c r" . lsp-rename)
+              ("C-c C-c q" . lsp-workspace-restart)
+              ("C-c C-c Q" . lsp-workspace-shutdown)
+              ("C-c C-c s" . lsp-rust-analyzer-status)))
+:config
+;;
+(setq rustic-format-on-save t)
+(add-hook 'rustic-mode-hook 'my/rustic-mode-hook)
+
+(defun my/rustic-mode-hook ()
+  (when buffer-file-name
+    (setq-local buffer-save-without-query t))
+  (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
 #+end_src
