@@ -88,8 +88,11 @@ osascript -e 'tell application "Finder" to make alias file to posix file "/opt/h
 - Set ⌘-e to open Emacs
 - Set ⌘-Return to open iterm2
 
-
 * FILE HEADERS
+The file header contains sets [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Lexical-Binding.html][lexical-binding]] to true. I also try to warn other people not to use my configuration as is.
+
+Here be dragons...
+
 ** =init.el=
 #+begin_src emacs-lisp :tangle init.el
 ;;; init.el -*- lexical-binding: t; -*-
