@@ -39,7 +39,7 @@
 ;;(setq doom-theme 'doom-one)
 (setq doom-theme 'doom-nord-aurora)
 
-(setq display-line-numbers-type t)
+(setq display-line-number-type t)
 
 ;; Setup size of frame on startup
 (add-to-list 'default-frame-alist '(height . 100))
