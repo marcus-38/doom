@@ -24,6 +24,8 @@
 (add-to-list 'default-frame-alist '(height . 100))
 (add-to-list 'default-frame-alist '(width . 170))
 
+
+
 (setq org-directory "~/Org/"
       my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively

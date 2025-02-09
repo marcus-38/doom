@@ -26,6 +26,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
     - [[#spacemacs-theme][Spacemacs-theme]]
   - [[#line-numbers][Line Numbers]]
   - [[#frame-start-size][Frame start size]]
+  - [[#time][Time]]
 - [[#org][Org]]
   - [[#org-settings][Org Settings]]
   - [[#org-capture][Org Capture]]
@@ -408,6 +409,10 @@ Spacemacs theme is an Emacs color theme that started as a theme for [[https://gi
 (add-to-list 'default-frame-alist '(width . 170))
 #+end_src
 
+** Time
+#+begin_src emacs-lisp :tangle config.el
+
+#+end_src
 * Org
 ** Org Settings
 These are my personal org settings.
