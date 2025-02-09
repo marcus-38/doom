@@ -472,23 +472,23 @@ These are my personal org settings.
 Org Tempo set up a few structured templates. With just a few keystrokes, it is possible to insert empty structural blocks.
 
 Just type =key= and press TAB to convert to =value=.
-|------+---------------------------------------|
-| key  | value                                 |
-|------+---------------------------------------|
-| < sh | #+BEGIN_SRC sh’ … ‘#+END_SRC          |
-| < p  | #+BEGIN_SRC python’ … ‘#+END_SRC      |
-| < el | #+BEGIN_SRC emacs-lisp’ … ‘#+END_SRC  |
-| < a  | #+BEGIN_EXPORT ascii’ … ‘#+END_EXPORT |
-| < c  | #+BEGIN_CENTER’ … ‘#+END_CENTER       |
-| < C  | #+BEGIN_COMMENT’ … ‘#+END_COMMENT     |
-| < e  | #+BEGIN_EXAMPLE’ … ‘#+END_EXAMPLE     |
-| < E  | #+BEGIN_EXPORT’ … ‘#+END_EXPORT       |
-| < h  | #+BEGIN_EXPORT html’ … ‘#+END_EXPORT  |
-| < l  | #+BEGIN_EXPORT latex’ … ‘#+END_EXPORT |
-| < q  | #+BEGIN_QUOTE’ … ‘#+END_QUOTE         |
-| < s  | #+BEGIN_SRC’ … ‘#+END_SRC             |
-| < v  | #+BEGIN_VERSE’ … ‘#+END_VERSE         |
-|------+---------------------------------------|
+|------+--------------------------------------------|
+| key  | value                                      |
+|------+--------------------------------------------|
+| < sh | #+BEGIN_SRC sh’         …   ‘#+END_SRC     |
+| < p  | #+BEGIN_SRC python’     …   ‘#+END_SRC     |
+| < el | #+BEGIN_SRC emacs-lisp’ …   ‘#+END_SRC     |
+| < a  | #+BEGIN_EXPORT ascii’   …   ‘#+END_EXPORT  |
+| < c  | #+BEGIN_CENTER’         …   ‘#+END_CENTER  |
+| < C  | #+BEGIN_COMMENT’        …   ‘#+END_COMMENT |
+| < e  | #+BEGIN_EXAMPLE’        …   ‘#+END_EXAMPLE |
+| < E  | #+BEGIN_EXPORT’         …   ‘#+END_EXPORT  |
+| < h  | #+BEGIN_EXPORT html’    …   ‘#+END_EXPORT  |
+| < l  | #+BEGIN_EXPORT latex’   …   ‘#+END_EXPORT  |
+| < q  | #+BEGIN_QUOTE’          …   ‘#+END_QUOTE   |
+| < s  | #+BEGIN_SRC’            …   ‘#+END_SRC     |
+| < v  | #+BEGIN_VERSE’          …   ‘#+END_VERSE   |
+|------+--------------------------------------------|
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! org-tempo
