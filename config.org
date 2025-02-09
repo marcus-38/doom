@@ -468,7 +468,7 @@ These are my personal org settings.
 #+end_src
 
 ** TODO Org Capture
-** TODO Org Tempo
+** Org Tempo
 Org Tempo set up a few structured templates. With just a few keystrokes, it is possible to insert empty structural blocks.
 
 Just type =key= and press TAB to convert to =value=.
