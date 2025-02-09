@@ -19,16 +19,11 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#configel][=config.el=]]
   - [[#packagesel][=packages.el=]]
 - [[#doom-modules][Doom Modules]]
-- [[#custom-packagesmoduels][Custom Packages/Moduels]]
-  - [[#spacemacs-theme][Spacemacs-theme]]
-  - [[#elfeed-goodies][Elfeed-goodies]]
-  - [[#rustic][Rustic]]
-    - [[#install-package][Install package]]
-    - [[#rustic-configuration][Rustic configuration]]
 - [[#personal-information][Personal information]]
 - [[#version-control][Version Control]]
 - [[#ui-settings][UI Settings]]
   - [[#theme][Theme]]
+    - [[#spacemacs-theme][Spacemacs-theme]]
   - [[#line-numbers][Line Numbers]]
   - [[#frame-start-size][Frame start size]]
 - [[#org][Org]]
@@ -48,6 +43,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
     - [[#python][Python]]
     - [[#lisp-family][Lisp Family]]
     - [[#rust][Rust]]
+      - [[#rustic][Rustic]]
     - [[#latex][LaTeX]]
 - [[#ai][AI]]
   - [[#code-completion][Code Completion]]
@@ -57,6 +53,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#browser][Browser]]
   - [[#mail][Mail]]
   - [[#elfeed][Elfeed]]
+    - [[#elfeed-goodies][Elfeed-goodies]]
 - [[#multimedia][Multimedia]]
 - [[#finance][Finance]]
 - [[#integrations][Integrations]]
@@ -379,71 +376,27 @@ This controls which Doom modules are enabled and what order they load in. Rememb
 
 #+end_src
 
-* Custom Packages/Moduels
-These packages and modules are added to the configuration.
-
-** Spacemacs-theme
-Spacemacs theme is an Emacs color theme that started as a theme for [[https://github.com/syl20bnr/spacemacs][spcaemacs]]. The theme comes with dark and light variants and it should work well with 256 color terminals.
-#+begin_src emacs-lisp :tangle packages.el
-(package! spacemacs-theme)
-#+end_src
-** Elfeed-goodies
-Elfeed-goodies provides an adaptive, powerline-based header for the =*elfeed-search*= and =*elfeed-entry*= buffers, with a matching entry format. A split pane setup. A function to toggle the =*elfeed-log*= buffer in a popup window and easy customisation.
-#+begin_src emacs-lisp :tangle packages.el
-(package! elfeed-goodies)
-#+end_src
-** Rustic
-Rustic is based on [[https://github.com/rust-lang/rust-mode][rust-mode]] and provides additional features:
-- cargo popup
-- multiline error parsing
-- translation of ANSI control sequences through xterm-color
-- async org babel
-- automatic LSP configuration with eglot or lsp-mode
-- etc.
-*** Install package
-Code is tangled into packages.el.
-#+begin_src emacs-lisp :tangle packages.el
-(package! rustic)
-#+end_src
-*** Rustic configuration
-Configuration code is tangled into config.el.
-#+begin_src emacs-lisp :tangle config.el
-(use-package! rustic
-  :ensure
-  :bind (:map rustic-mode-map
-              ("M-j" . lsp-ui-imenu)
-              ("M-?" . lsp-find-references)
-              ("C-c C-c l" . flycheck-list-errors)
-              ("C-c C-c a" . lsp-execute-code-action)
-              ("C-c C-c r" . lsp-rename)
-              ("C-c C-c q" . lsp-workspace-restart)
-              ("C-c C-c Q" . lsp-workspace-shutdown)
-              ("C-c C-c s" . lsp-rust-analyzer-status)))
-:config
-;;
-(setq rustic-format-on-save t)
-(add-hook 'rustic-mode-hook 'my/rustic-mode-hook)
-
-(defun my/rustic-mode-hook ()
-  (when buffer-file-name
-    (setq-local buffer-save-without-query t))
-  (add-hook 'before-save-hook 'lsp-format-buffer nil t))
-
-#+end_src
-
 * Personal information
 #+begin_src emacs-lisp :tangle config.el
 (setq user-full-name "Marcus"
        user-mail-address "marcus@r38.se")
 #+end_src
+
 * TODO Version Control
 Move all version control code here.
+
 * UI Settings
 ** Theme
 #+begin_src emacs-lisp :tangle config.el
 ;;(setq doom-theme 'doom-one)
 (setq doom-theme 'doom-nord-aurora)
 #+end_src
+*** Spacemacs-theme
+Spacemacs theme is an Emacs color theme that started as a theme for [[https://github.com/syl20bnr/spacemacs][spcaemacs]]. The theme comes with dark and light variants and it should work well with 256 color terminals.
+#+begin_src emacs-lisp :tangle packages.el
+(package! spacemacs-theme)
+#+end_src
+
 ** Line Numbers
 #+begin_src emacs-lisp :tangle config.el
 (setq display-line-number-type t)
@@ -454,6 +407,7 @@ Move all version control code here.
 (add-to-list 'default-frame-alist '(height . 100))
 (add-to-list 'default-frame-alist '(width . 170))
 #+end_src
+
 * Org
 ** Org Settings
 These are my personal org settings.
@@ -521,6 +475,7 @@ Just type =key= and press TAB to convert to =value=.
   )
 #+end_src
 ** TODO Org Roam
+
 * Programming
 Turn emacs into a nice IDE for programming.
 ** TODO Completion
@@ -533,13 +488,52 @@ Turn emacs into a nice IDE for programming.
 *** TODO Python
 *** TODO Lisp Family
 The Lisp family contains =common lisp=, =scheme=, =racket=, =clojure= and =emacs lisp=.
-*** TODO Rust
-Move all rust implementations here.
+*** Rust
+**** Rustic
+Rustic is based on [[https://github.com/rust-lang/rust-mode][rust-mode]] and provides additional features:
+- cargo popup
+- multiline error parsing
+- translation of ANSI control sequences through xterm-color
+- async org babel
+- automatic LSP configuration with eglot or lsp-mode
+- etc.
+***** Install package
+Code is tangled into packages.el.
+#+begin_src emacs-lisp :tangle packages.el
+(package! rustic)
+#+end_src
+***** Rustic configuration
+Configuration code is tangled into config.el.
+#+begin_src emacs-lisp :tangle config.el
+(use-package! rustic
+  :ensure
+  :bind (:map rustic-mode-map
+              ("M-j" . lsp-ui-imenu)
+              ("M-?" . lsp-find-references)
+              ("C-c C-c l" . flycheck-list-errors)
+              ("C-c C-c a" . lsp-execute-code-action)
+              ("C-c C-c r" . lsp-rename)
+              ("C-c C-c q" . lsp-workspace-restart)
+              ("C-c C-c Q" . lsp-workspace-shutdown)
+              ("C-c C-c s" . lsp-rust-analyzer-status)))
+:config
+;;
+(setq rustic-format-on-save t)
+(add-hook 'rustic-mode-hook 'my/rustic-mode-hook)
+
+(defun my/rustic-mode-hook ()
+  (when buffer-file-name
+    (setq-local buffer-save-without-query t))
+  (add-hook 'before-save-hook 'lsp-format-buffer nil t))
+
+#+end_src
 *** TODO LaTeX
+
 * AI
 ** TODO Code Completion
 ** TODO AI Assistant Programming
 ** TODO Chat Function
+
 * Internet
 ** TODO Browser
 ** TODO Mail
@@ -553,6 +547,11 @@ Move all rust implementations here.
                      ("https://planet.emacslife.com/atom.xml" emacs)
                      )))
 (global-set-key (kbd "C-x w") 'elfeed)
+#+end_src
+*** Elfeed-goodies
+Elfeed-goodies provides an adaptive, powerline-based header for the =*elfeed-search*= and =*elfeed-entry*= buffers, with a matching entry format. A split pane setup. A function to toggle the =*elfeed-log*= buffer in a popup window and easy customisation.
+#+begin_src emacs-lisp :tangle packages.el
+(package! elfeed-goodies)
 #+end_src
 
 * TODO Multimedia
