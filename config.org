@@ -394,6 +394,10 @@ Spacemacs theme is an Emacs color theme that started as a theme for [[https://gi
 #+end_src
 
 ** Line Numbers
+Line number can be toogled by =SPC-t-l=. Possible types are:
+- =t=: regular line numbers
+- ='relative=: relative line numbers
+- =nil=: no line numbers
 #+begin_src emacs-lisp :tangle config.el
 (setq display-line-number-type t)
 #+end_src
