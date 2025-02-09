@@ -20,7 +20,6 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#packagesel][=packages.el=]]
 - [[#doom-modules][Doom Modules]]
 - [[#personal-information][Personal information]]
-- [[#version-control][Version Control]]
 - [[#ui-settings][UI Settings]]
   - [[#theme][Theme]]
     - [[#spacemacs-theme][Spacemacs-theme]]
@@ -382,11 +381,6 @@ This controls which Doom modules are enabled and what order they load in. Rememb
        user-mail-address "marcus@r38.se")
 #+end_src
 
-* TODO Version Control
-#+begin_src emacs-lisp :tangle config.el
-(use-package! git-gutter
-  :hook (after-init . global-git-gutter-mode))
-#+end_src
 * UI Settings
 ** Theme
 #+begin_src emacs-lisp :tangle config.el

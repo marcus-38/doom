@@ -15,9 +15,6 @@
 (setq user-full-name "Marcus"
        user-mail-address "marcus@r38.se")
 
-(use-package! git-gutter
-  :hook (after-init . global-git-gutter-mode))
-
 ;;(setq doom-theme 'doom-one)
 (setq doom-theme 'doom-nord-aurora)
 
