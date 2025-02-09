@@ -59,6 +59,28 @@
   (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
   )
 
+(use-package! org-agenda
+  :bind (("C-c a" . org-agenda))
+  :hook ((org-agenda-finalize . hl-line-mode)
+         (org-agenda-finalize . org-agenda-entry-text-mode))
+  :custom
+  (org-agenda-current-time-string (if (and (display-graphic-p)
+                                           (char-displayable-p ?←)
+                                           (char-displayable-p ?-))
+                                      "⬅️ now"
+                                    "now - - - - - - - - - - - - - - - - - - - - - - - - -"))
+  (org-agenda-timegrid-use-ampm nil)
+  (org-agenda-tags-column 0)
+  (org-agenda-window-setup 'only-window)
+  (org-agenda-restore-windows-after-quit t)
+  (org-agenda-log-mode-items '(closed clock state))
+  (org-agenda-time-grid '((daily today require-timed)
+                          (600 800 1000 1200 1400 1600 1800 2000)
+                          " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
+  (org-agenda-files "~/Org/agenda.org")
+  (org-agenda-start-on-weedkay nil)
+  )
+
 ;; Elfeed
 (require 'elfeed-goodies)
 (elfeed-goodies/setup)
