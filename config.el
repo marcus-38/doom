@@ -52,6 +52,13 @@
                                             "\.org$"))
                                my-agenda-dirs))
 
+(use-package! org-tempo
+  :config
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("p" . "src python"))
+  (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
+  )
+
 ;; Elfeed
 (require 'elfeed-goodies)
 (elfeed-goodies/setup)
