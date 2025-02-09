@@ -16,8 +16,3 @@ Running =doom sync= in a terminal or =SPC h r r= in emacs generates the actual c
 - [[file:config.el][config.el]]
 - [[file:init.el][init.el]]
 - [[file:packages.el][packages.el]]
-
-** TODO List of things to do
-- [X] Convert to literate config
-- [ ] Setup Elfeed
-- [ ] Setup Mu4e
