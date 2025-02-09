@@ -15,6 +15,9 @@
 (setq user-full-name "Marcus"
        user-mail-address "marcus@r38.se")
 
+(use-package! git-gutter
+  :hook (after-init . global-git-gutter-mode))
+
 ;;(setq doom-theme 'doom-one)
 (setq doom-theme 'doom-nord-aurora)
 
@@ -23,8 +26,6 @@
 ;; Setup size of frame on startup
 (add-to-list 'default-frame-alist '(height . 100))
 (add-to-list 'default-frame-alist '(width . 170))
-
-
 
 (setq org-directory "~/Org/"
       my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
