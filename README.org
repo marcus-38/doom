@@ -16,3 +16,13 @@ Running =doom sync= in a terminal or =SPC h r r= in emacs generates the actual c
 - [[file:config.el][config.el]]
 - [[file:init.el][init.el]]
 - [[file:packages.el][packages.el]]
+
+* References
+This configuration relly on other people's files and from other resources. My top go to places when looking for insperation and solutions are:
+
+- [[http://pages.sachachua.com/.emacs.d/Sacha.html][Sacha Chua's Emacs Configuration]]
+- [[https://www.masteringemacs.org/][Mastering Emacs]]
+- [[https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org][Doom Emacs Getting Started Guide]]
+- [[https://protesilaos.com/][Protesilaos Stavrou]]
+- [[https://www.pygopar.com/][Pygopar]]
+- [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs]]
