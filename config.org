@@ -402,6 +402,7 @@ Line number can be toogled by =SPC-t-l=. Possible types are:
 (setq display-line-number-type t)
 #+end_src
 ** Frame start size
+=default-fram-alist= is a list of default values of frame parameters for frame creation.
 #+begin_src emacs-lisp :tangle config.el
 ;; Setup size of frame on startup
 (add-to-list 'default-frame-alist '(height . 100))
