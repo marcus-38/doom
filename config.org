@@ -65,7 +65,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#search][Search]]
 
 * References
-This configuration relly on other people's files and from other resources. My top go to when looking for insperation and solutions are:
+This configuration relly on other people's files and from other resources. My top go to places when looking for insperation and solutions are:
 
 - [[http://pages.sachachua.com/.emacs.d/Sacha.html][Sacha Chua's Emacs Configuration]]
 - [[https://www.masteringemacs.org/][Mastering Emacs]]
