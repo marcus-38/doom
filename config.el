@@ -46,7 +46,7 @@
 (add-to-list 'default-frame-alist '(width . 170))
 
 (setq org-directory "~/Org/"
-      my-agenda-dirs '("~/.doom.d") ; add more directories to look for agenda entries
+      my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively
                                             (expand-file-name x org-directory)
                                             "\.org$"))
@@ -77,7 +77,6 @@
   (org-agenda-time-grid '((daily today require-timed)
                           (600 800 1000 1200 1400 1600 1800 2000)
                           " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
-  (org-agenda-files "~/Org/agenda.org")
   (org-agenda-start-on-weedkay nil)
   )
 

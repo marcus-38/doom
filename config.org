@@ -459,7 +459,7 @@ Move all version control code here.
 These are my personal org settings.
 #+begin_src emacs-lisp :tangle config.el
 (setq org-directory "~/Org/"
-      my-agenda-dirs '("~/.doom.d") ; add more directories to look for agenda entries
+      my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively
                                             (expand-file-name x org-directory)
                                             "\.org$"))
@@ -517,7 +517,6 @@ Just type =key= and press TAB to convert to =value=.
   (org-agenda-time-grid '((daily today require-timed)
                           (600 800 1000 1200 1400 1600 1800 2000)
                           " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
-  (org-agenda-files "~/Org/agenda.org")
   (org-agenda-start-on-weedkay nil)
   )
 #+end_src
