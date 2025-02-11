@@ -133,12 +133,10 @@
     ("l" "→" windmove-right :transient t)
     ("k" "↑" windmove-up :transient t)]
     ["Swap"
-    ; ("s" "Swap" ace-swap-window)
-     ]
-    ;; ("sh" "←" windmove-swap-states-left :transient t)
-    ;; ("sj" "↓" windmove-swap-states-down :transient t)
-    ;; ("sl" "→" windmove-swap-states-right :transient t)
-    ;; ("sk" "↑" windmove-swap-states-up :transient t)]
+    ("sh" "←" windmove-swap-states-left :transient t)
+    ("sj" "↓" windmove-swap-states-down :transient t)
+    ("sl" "→" windmove-swap-states-right :transient t)
+    ("sk" "↑" windmove-swap-states-up :transient t)]
     ["Delete"
     ("dh" "←" windmove-delete-left :transient t)
     ("dj" "↓" windmove-delete-down :transient t)
