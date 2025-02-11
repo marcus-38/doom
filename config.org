@@ -59,6 +59,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#consoles][Consoles]]
   - [[#operating-system][Operating System]]
   - [[#search][Search]]
+- [[#transient][Transient]]
 
 * References
 This configuration relly on other people's files and from other resources. My top go to places when looking for insperation and solutions are:
@@ -563,3 +564,84 @@ Elfeed-goodies provides an adaptive, powerline-based header for the =*elfeed-sea
 ** TODO Operating System
 ** TODO Search
 Stuff like Ack, Ag, ripgrep, etc.
+
+* Transient
+#+begin_src emacs-lisp :tangle config.el
+(use-package! transient
+  :defer
+  :bind ("C-M-o" . windows-transient-window)
+  :init
+  (transient-define-prefix windows-transient-window ()
+   "Display a transient buffer showing useful window manipulation bindings."
+    [["Resize"
+     ("}" "h+" enlarge-window-horizontally :transient t)
+     ("{" "h-" shrink-window-horizontally :transient t)
+     ("^" "v+" enlarge-window :transient t)
+     ("V" "v-" shrink-window :transient t)]
+     ["Split"
+    ("v" "vertical" (lambda ()
+       (interactive)
+       (split-window-right)
+       (windmove-right)) :transient t)
+    ("x" "horizontal" (lambda ()
+       (interactive)
+       (split-window-below)
+       (windmove-down)) :transient t)
+    ("wv" "win-vertical" (lambda ()
+       (interactive)
+       (select-window (split-window-right))
+       (windows-transient-window)) :transient nil)
+    ("wx" "win-horizontal" (lambda ()
+       (interactive)
+       (select-window (split-window-below))
+       (windows-transient-window)) :transient nil)]
+    ["Misc"
+     ("B" "switch buffer" (lambda ()
+                            (interactive)
+                            (consult-buffer)
+                            (windows-transient-window)))
+     ("z" "undo" (lambda ()
+                  (interactive)
+                  (winner-undo)
+                  (setq this-command 'winner-undo)) :transient t)
+    ("Z" "redo" winner-redo :transient t)]]
+    [["Move"
+    ("h" "←" windmove-left :transient t)
+    ("j" "↓" windmove-down :transient t)
+    ("l" "→" windmove-right :transient t)
+    ("k" "↑" windmove-up :transient t)]
+    ["Swap"
+    ; ("s" "Swap" ace-swap-window)
+     ]
+    ;; ("sh" "←" windmove-swap-states-left :transient t)
+    ;; ("sj" "↓" windmove-swap-states-down :transient t)
+    ;; ("sl" "→" windmove-swap-states-right :transient t)
+    ;; ("sk" "↑" windmove-swap-states-up :transient t)]
+    ["Delete"
+    ("dh" "←" windmove-delete-left :transient t)
+    ("dj" "↓" windmove-delete-down :transient t)
+    ("dl" "→" windmove-delete-right :transient t)
+    ("dk" "↑" windmove-delete-up :transient t)
+    ("D" "This" delete-window :transient t)]
+    ["Transpose"
+    ("tt" "↜" (lambda ()
+                (interactive)
+                (transpose-frame)
+                (windows-transient-window)) :transient nil)
+    ("ti" "↕" (lambda ()
+                (interactive)
+                (flip-frame)
+                (windows-transient-window)) :transient nil)
+    ("to" "⟷" (lambda ()
+                (interactive)
+                (flop-frame)
+                (windows-transient-window)) :transient nil)
+    ("tc" "⟳" (lambda ()
+                (interactive)
+                (rotate-frame-clockwise)
+                (windows-transient-window)) :transient nil)
+    ("ta" "⟲" (lambda ()
+                (interactive)
+                (rotate-frame-anticlockwise)
+                (windows-transient-window)) :transient nil)]]))
+#+end_src
