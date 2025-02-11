@@ -15,5 +15,3 @@
 (package! spacemacs-theme)
 
 (package! rustic)
-
-(package! elfeed-goodies)

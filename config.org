@@ -52,7 +52,6 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#browser][Browser]]
   - [[#mail][Mail]]
   - [[#elfeed][Elfeed]]
-    - [[#elfeed-goodies][Elfeed-goodies]]
 - [[#multimedia][Multimedia]]
 - [[#finance][Finance]]
 - [[#integrations][Integrations]]
@@ -60,6 +59,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#operating-system][Operating System]]
   - [[#search][Search]]
 - [[#transient][Transient]]
+  - [[#menu-to-control-windows][Menu to control windows]]
 
 * References
 This configuration relly on other people's files and from other resources. My top go to places when looking for insperation and solutions are:
@@ -541,21 +541,6 @@ Configuration code is tangled into config.el.
 ** TODO Browser
 ** TODO Mail
 ** Elfeed
-#+begin_src emacs-lisp :tangle config.el
-;; Elfeed
-(require 'elfeed-goodies)
-(elfeed-goodies/setup)
-(setq elfeed-feeds (quote
-                    (("https://hackaday.com/blog/feed/" hackaday linux)
-                     ("https://planet.emacslife.com/atom.xml" emacs)
-                     )))
-(global-set-key (kbd "C-x w") 'elfeed)
-#+end_src
-*** Elfeed-goodies
-Elfeed-goodies provides an adaptive, powerline-based header for the =*elfeed-search*= and =*elfeed-entry*= buffers, with a matching entry format. A split pane setup. A function to toggle the =*elfeed-log*= buffer in a popup window and easy customisation.
-#+begin_src emacs-lisp :tangle packages.el
-(package! elfeed-goodies)
-#+end_src
 
 * TODO Multimedia
 * TODO Finance
@@ -566,6 +551,7 @@ Elfeed-goodies provides an adaptive, powerline-based header for the =*elfeed-sea
 Stuff like Ack, Ag, ripgrep, etc.
 
 * Transient
+** Menu to control windows
 #+begin_src emacs-lisp :tangle config.el
 (use-package! transient
   :defer
@@ -625,25 +611,5 @@ Stuff like Ack, Ag, ripgrep, etc.
     ("dl" "→" windmove-delete-right :transient t)
     ("dk" "↑" windmove-delete-up :transient t)
     ("D" "This" delete-window :transient t)]
-    ["Transpose"
-    ("tt" "↜" (lambda ()
-                (interactive)
-                (transpose-frame)
-                (windows-transient-window)) :transient nil)
-    ("ti" "↕" (lambda ()
-                (interactive)
-                (flip-frame)
-                (windows-transient-window)) :transient nil)
-    ("to" "⟷" (lambda ()
-                (interactive)
-                (flop-frame)
-                (windows-transient-window)) :transient nil)
-    ("tc" "⟳" (lambda ()
-                (interactive)
-                (rotate-frame-clockwise)
-                (windows-transient-window)) :transient nil)
-    ("ta" "⟲" (lambda ()
-                (interactive)
-                (rotate-frame-anticlockwise)
-                (windows-transient-window)) :transient nil)]]))
+    ]))
 #+end_src

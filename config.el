@@ -80,15 +80,6 @@
     (setq-local buffer-save-without-query t))
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
-;; Elfeed
-(require 'elfeed-goodies)
-(elfeed-goodies/setup)
-(setq elfeed-feeds (quote
-                    (("https://hackaday.com/blog/feed/" hackaday linux)
-                     ("https://planet.emacslife.com/atom.xml" emacs)
-                     )))
-(global-set-key (kbd "C-x w") 'elfeed)
-
 (use-package! transient
   :defer
   :bind ("C-M-o" . windows-transient-window)
@@ -147,24 +138,4 @@
     ("dl" "→" windmove-delete-right :transient t)
     ("dk" "↑" windmove-delete-up :transient t)
     ("D" "This" delete-window :transient t)]
-    ["Transpose"
-    ("tt" "↜" (lambda ()
-                (interactive)
-                (transpose-frame)
-                (windows-transient-window)) :transient nil)
-    ("ti" "↕" (lambda ()
-                (interactive)
-                (flip-frame)
-                (windows-transient-window)) :transient nil)
-    ("to" "⟷" (lambda ()
-                (interactive)
-                (flop-frame)
-                (windows-transient-window)) :transient nil)
-    ("tc" "⟳" (lambda ()
-                (interactive)
-                (rotate-frame-clockwise)
-                (windows-transient-window)) :transient nil)
-    ("ta" "⟲" (lambda ()
-                (interactive)
-                (rotate-frame-anticlockwise)
-                (windows-transient-window)) :transient nil)]]))
+    ]))
