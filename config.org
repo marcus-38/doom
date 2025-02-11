@@ -25,6 +25,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
     - [[#spacemacs-theme][Spacemacs-theme]]
   - [[#line-numbers][Line Numbers]]
   - [[#frame-start-size][Frame start size]]
+- [[#key-bindings][Key Bindings]]
 - [[#org][Org]]
   - [[#org-settings][Org Settings]]
   - [[#org-capture][Org Capture]]
@@ -411,6 +412,16 @@ Line number can be toogled by =SPC-t-l=. Possible types are:
 (add-to-list 'default-frame-alist '(width . 170))
 #+end_src
 
+* Key Bindings
+Adding some custom key bindings for my transient menues and useful stuff.
+#+begin_src emacs-lisp :tangle config.el
+(map! :leader
+      "W" #'my/windows-transient-window)
+#+end_src
+
+#+RESULTS:
+: my/windows-transient-window
+
 * Org
 ** Org Settings
 These are my personal org settings.
@@ -555,15 +566,15 @@ Stuff like Ack, Ag, ripgrep, etc.
 #+begin_src emacs-lisp :tangle config.el
 (use-package! transient
   :defer
-  :bind ("C-M-o" . windows-transient-window)
+  :bind ("C-M-o" . my/windows-transient-window)
   :init
-  (transient-define-prefix windows-transient-window ()
+  (transient-define-prefix my/windows-transient-window ()
    "Display a transient buffer showing useful window manipulation bindings."
     [["Resize"
-     ("}" "h+" enlarge-window-horizontally :transient t)
-     ("{" "h-" shrink-window-horizontally :transient t)
-     ("^" "v+" enlarge-window :transient t)
-     ("V" "v-" shrink-window :transient t)]
+     (")" "h+" enlarge-window-horizontally :transient t)
+     ("(" "h-" shrink-window-horizontally :transient t)
+     ("K" "v+" enlarge-window :transient t)
+     ("J" "v-" shrink-window :transient t)]
      ["Split"
     ("v" "vertical" (lambda ()
        (interactive)
@@ -613,3 +624,6 @@ Stuff like Ack, Ag, ripgrep, etc.
     ("D" "This" delete-window :transient t)]
     ]))
 #+end_src
+
+#+RESULTS:
+: my/windows-transient-window

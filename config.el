@@ -24,6 +24,9 @@
 (add-to-list 'default-frame-alist '(height . 100))
 (add-to-list 'default-frame-alist '(width . 170))
 
+(map! :leader
+      "W" #'my/windows-transient-window)
+
 (setq org-directory "~/Org/"
       my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively
@@ -82,15 +85,15 @@
 
 (use-package! transient
   :defer
-  :bind ("C-M-o" . windows-transient-window)
+  :bind ("C-M-o" . my/windows-transient-window)
   :init
-  (transient-define-prefix windows-transient-window ()
+  (transient-define-prefix my/windows-transient-window ()
    "Display a transient buffer showing useful window manipulation bindings."
     [["Resize"
-     ("}" "h+" enlarge-window-horizontally :transient t)
-     ("{" "h-" shrink-window-horizontally :transient t)
-     ("^" "v+" enlarge-window :transient t)
-     ("V" "v-" shrink-window :transient t)]
+     (")" "h+" enlarge-window-horizontally :transient t)
+     ("(" "h-" shrink-window-horizontally :transient t)
+     ("K" "v+" enlarge-window :transient t)
+     ("J" "v-" shrink-window :transient t)]
      ["Split"
     ("v" "vertical" (lambda ()
        (interactive)
