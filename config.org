@@ -414,13 +414,17 @@ Line number can be toogled by =SPC-t-l=. Possible types are:
 
 * Key Bindings
 Adding some custom key bindings for my transient menues and useful stuff.
+|-------------+----------------------------------------|
+| Key binding | Function                               |
+|-------------+----------------------------------------|
+| SPC W       | Transient window for window management |
+|             |                                        |
+|-------------+----------------------------------------|
+
 #+begin_src emacs-lisp :tangle config.el
 (map! :leader
       "W" #'my/windows-transient-window)
 #+end_src
-
-#+RESULTS:
-: my/windows-transient-window
 
 * Org
 ** Org Settings
