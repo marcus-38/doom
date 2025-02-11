@@ -20,9 +20,9 @@
 
 (setq display-line-number-type t)
 
-;; Setup size of frame on startup
-(add-to-list 'default-frame-alist '(height . 100))
-(add-to-list 'default-frame-alist '(width . 170))
+(setq blink-matching-paren 'jump
+      show-paren-style 'mixed
+      blink-matching-delay 1)
 
 (map! :leader
       "W" #'my/windows-transient-window)

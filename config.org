@@ -24,7 +24,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#theme][Theme]]
     - [[#spacemacs-theme][Spacemacs-theme]]
   - [[#line-numbers][Line Numbers]]
-  - [[#frame-start-size][Frame start size]]
+  - [[#parentheses][Parentheses]]
 - [[#key-bindings][Key Bindings]]
 - [[#org][Org]]
   - [[#org-settings][Org Settings]]
@@ -404,14 +404,12 @@ Line number can be toogled by =SPC-t-l=. Possible types are:
 #+begin_src emacs-lisp :tangle config.el
 (setq display-line-number-type t)
 #+end_src
-** Frame start size
-=default-fram-alist= is a list of default values of frame parameters for frame creation.
+** Parentheses
 #+begin_src emacs-lisp :tangle config.el
-;; Setup size of frame on startup
-(add-to-list 'default-frame-alist '(height . 100))
-(add-to-list 'default-frame-alist '(width . 170))
+(setq blink-matching-paren 'jump
+      show-paren-style 'mixed
+      blink-matching-delay 1)
 #+end_src
-
 * Key Bindings
 Adding some custom key bindings for my transient menues and useful stuff.
 |-------------+----------------------------------------|
