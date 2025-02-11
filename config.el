@@ -126,7 +126,11 @@
                   (interactive)
                   (winner-undo)
                   (setq this-command 'winner-undo)) :transient t)
-    ("Z" "redo" winner-redo :transient t)]]
+    ("Z" "redo" winner-redo :transient t)
+    ("q" "exit menu" (lambda ()
+                       (interactive)
+                       (doom/escape)) :transient nil)
+    ]]
     [["Move"
     ("h" "←" windmove-left :transient t)
     ("j" "↓" windmove-down :transient t)
