@@ -85,6 +85,24 @@
   (org-agenda-start-on-weedkay nil)
   )
 
+(use-package! dired
+  :hook ((dired-mode . dired-hide-details-mode)
+         (dired-mode . hl-line-mode))
+  :custom
+  (dired-do-revert-buffer t)
+  (dired-auto-revert-buffer t)
+  (delete-by-moving-to-trash t)
+  (dired-mouse-drag-files t)
+  (dired-dwim-target t)
+  (dired-listing-switches "-AlhoF --group-directories-first"))
+(use-package! all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode)
+  :custom
+  (all-the-icons-dired-monochrome nil))
+(use-package! files
+  :custom
+  (insert-directory-program "gls"))
+
 (use-package! rustic
   :ensure
   :bind (:map rustic-mode-map

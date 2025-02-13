@@ -36,6 +36,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#org-tempo][Org Tempo]]
   - [[#org-agenda][Org Agenda]]
   - [[#org-roam][Org Roam]]
+- [[#dired][Dired]]
 - [[#programming][Programming]]
   - [[#completion][Completion]]
   - [[#jump-to-definition][Jump to Definition]]
@@ -537,6 +538,29 @@ Just type =key= and press TAB to convert to =value=.
 #+end_src
 ** TODO Org Roam
 
+* Dired
+#+begin_src emacs-lisp :tangle packages.el
+(package! all-the-icons-dired)
+#+end_src
+#+begin_src emacs-lisp :tangle config.el
+(use-package! dired
+  :hook ((dired-mode . dired-hide-details-mode)
+         (dired-mode . hl-line-mode))
+  :custom
+  (dired-do-revert-buffer t)
+  (dired-auto-revert-buffer t)
+  (delete-by-moving-to-trash t)
+  (dired-mouse-drag-files t)
+  (dired-dwim-target t)
+  (dired-listing-switches "-AlhoF --group-directories-first"))
+(use-package! all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode)
+  :custom
+  (all-the-icons-dired-monochrome nil))
+(use-package! files
+  :custom
+  (insert-directory-program "gls"))
+#+end_src
 * Programming
 Turn emacs into a nice IDE for programming.
 ** TODO Completion

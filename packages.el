@@ -20,4 +20,6 @@
 
 (package! whitespace)
 
+(package! all-the-icons-dired)
+
 (package! rustic)
