@@ -103,6 +103,32 @@
   :custom
   (insert-directory-program "gls"))
 
+(use-package! all-the-icons-ibuffer
+  :custom
+  (all-the-icons-ibuffer-formats
+   ´((mark modified read-only locked vc-satus-mini
+           " " ,(if all-the-icons-ibuffer-icon
+                    ´(icon 2 2 :left :elide)
+                    "")
+           ,(if all-the-icons-ibuffer-icon
+                (propertize " " 'display ´(space :align-to 8))
+              "")
+           (name 18 18 :left :elide)
+           " " (size-h 9 -1 :right)
+           " " (mode+ 16 16 :right)
+           " " (vc-status 16 16 :left)
+           " " vc-relative-file)
+     (mark " " (name 16 -1) " " filename)))
+  :hook (ibuffer-mode . all-the-icons-ibuffer-mode))
+
+(use-package! ibuffer-vc
+  :hook (ibuffer . (lambda ()
+                     (ibuffer-vc-set-filter-groups-by-vc-root)
+                     (unless (eq ibuffer-sorting-mode 'alphabetic)
+                       (ibuffer-do-sort-by-vc-status)
+                       )
+                     )))
+
 (use-package! rustic
   :ensure
   :bind (:map rustic-mode-map

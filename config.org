@@ -37,6 +37,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#org-agenda][Org Agenda]]
   - [[#org-roam][Org Roam]]
 - [[#dired][Dired]]
+- [[#ibuffer][IBuffer]]
 - [[#programming][Programming]]
   - [[#completion][Completion]]
   - [[#jump-to-definition][Jump to Definition]]
@@ -561,6 +562,40 @@ Just type =key= and press TAB to convert to =value=.
   :custom
   (insert-directory-program "gls"))
 #+end_src
+* IBuffer
+My IBuffer settings.
+#+begin_src emacs-lisp :tangle packages.el
+(package! all-the-icons-ibuffer)
+(package! ibuffer-vc)
+#+end_src
+#+begin_src emacs-lisp :tangle config.el
+(use-package! all-the-icons-ibuffer
+  :custom
+  (all-the-icons-ibuffer-formats
+   ´((mark modified read-only locked vc-satus-mini
+           " " ,(if all-the-icons-ibuffer-icon
+                    ´(icon 2 2 :left :elide)
+                    "")
+           ,(if all-the-icons-ibuffer-icon
+                (propertize " " 'display ´(space :align-to 8))
+              "")
+           (name 18 18 :left :elide)
+           " " (size-h 9 -1 :right)
+           " " (mode+ 16 16 :right)
+           " " (vc-status 16 16 :left)
+           " " vc-relative-file)
+     (mark " " (name 16 -1) " " filename)))
+  :hook (ibuffer-mode . all-the-icons-ibuffer-mode))
+
+(use-package! ibuffer-vc
+  :hook (ibuffer . (lambda ()
+                     (ibuffer-vc-set-filter-groups-by-vc-root)
+                     (unless (eq ibuffer-sorting-mode 'alphabetic)
+                       (ibuffer-do-sort-by-vc-status)
+                       )
+                     )))
+#+end_src
+
 * Programming
 Turn emacs into a nice IDE for programming.
 ** TODO Completion

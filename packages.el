@@ -22,4 +22,7 @@
 
 (package! all-the-icons-dired)
 
+(package! all-the-icons-ibuffer)
+(package! ibuffer-vc)
+
 (package! rustic)
