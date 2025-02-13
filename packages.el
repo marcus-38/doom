@@ -29,4 +29,12 @@
 (package! all-the-icons-ibuffer)
 (package! ibuffer-vc)
 
+(package! lsp-mode)
+(package! lsp-ui)
+(package! consult-lsp)
+(package! dap-mode)
+(package! ccls)
+(package! cmake-mode)
+(package! google-c-style)
+
 (package! rustic)

@@ -150,6 +150,50 @@
                             (name . "^\\*Messages\\*$")))))))
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-switch-to-saved-filter-groups "default")))
 
+(use-package! lsp-mode
+  :commands (lsp lsp-deferred)
+  :hook ((prog-mode . lsp-deferred)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :custom
+  (lsp-enable-folding nil)
+  (lsp-enable-links nil)
+  (lsp-enable-snippet nil)
+  (lsp-keymap-prefix "C-c ;")
+  (lsp-session-file (expand-file-name (format "%s/emacs/lsp-session-v1" xdg-data)))
+  (read-process-output-max (* 1024 1024)))
+
+(use-package! lsp-ui
+  :hook (lsp-mode . lsp-ui-mode))
+
+(use-package! consult-lsp
+  :commands (consult-lsp-diagnostics consult-lsp-symbols))
+
+(use-package! dap-mode
+  :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-ui-mode t))
+
+(use-package! ccls
+  :after projectile
+  :hook ((c-mode c++-mode objc-mode cuda-mode) . lsp-deferred)
+  :custom
+  (ccls-args nil)
+  (ccls-executable (executable-find "ccls"))
+  (projectile-project-root-files-top-down-recurring
+   (append '("complie_commands.json" ".ccls")
+           projectile-project-root-files-top-down-recurring))
+  :config
+  (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
+
+(use-package! google-c-style
+  :hook (((c-mode c++-mode ) . google-set-c-style)
+         (c-mode-common . google-make-newline-indent)))
+
+(use-package! cmake-mode
+  :hook (cmake-mode . lsp-deferred)
+  :mode ("CMakeLists\\.txt'" "\\.cmake\\'"))
+
 (use-package! rustic
   :ensure
   :bind (:map rustic-mode-map

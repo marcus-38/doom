@@ -42,18 +42,10 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
 - [[#dired][Dired]]
 - [[#ibuffer][IBuffer]]
 - [[#programming][Programming]]
-  - [[#completion][Completion]]
-  - [[#jump-to-definition][Jump to Definition]]
-  - [[#lsp-client][LSP Client]]
-  - [[#error-checking][Error Checking]]
-  - [[#compiling][Compiling]]
+  - [[#get-all-packages][Get all packages]]
   - [[#programming-language][Programming Language]]
-    - [[#cc][C/C++]]
-    - [[#python][Python]]
-    - [[#lisp-family][Lisp Family]]
     - [[#rust][Rust]]
       - [[#rustic][Rustic]]
-    - [[#latex][LaTeX]]
 - [[#ai][AI]]
   - [[#code-completion][Code Completion]]
   - [[#ai-assistant-programming][AI Assistant Programming]]
@@ -107,7 +99,11 @@ brew install wget \
     coreutils \
     btop \
     cmake \
+    ccls \
     sbcl \
+    llvm \
+    lld \
+    bear \
     clisp \
     java11 \
     isort \
@@ -646,16 +642,63 @@ My IBuffer settings.
 
 * Programming
 Turn emacs into a nice IDE for programming.
-** TODO Completion
-** TODO Jump to Definition
-** TODO LSP Client
-** TODO Error Checking
-** TODO Compiling
+** Get all packages
+#+begin_src emacs-lisp :tangle packages.el
+(package! lsp-mode)
+(package! lsp-ui)
+(package! consult-lsp)
+(package! dap-mode)
+(package! ccls)
+(package! cmake-mode)
+(package! google-c-style)
+#+end_src
+#+begin_src emacs-lisp :tangle config.el
+(use-package! lsp-mode
+  :commands (lsp lsp-deferred)
+  :hook ((prog-mode . lsp-deferred)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :custom
+  (lsp-enable-folding nil)
+  (lsp-enable-links nil)
+  (lsp-enable-snippet nil)
+  (lsp-keymap-prefix "C-c ;")
+  (lsp-session-file (expand-file-name (format "%s/emacs/lsp-session-v1" xdg-data)))
+  (read-process-output-max (* 1024 1024)))
+
+(use-package! lsp-ui
+  :hook (lsp-mode . lsp-ui-mode))
+
+(use-package! consult-lsp
+  :commands (consult-lsp-diagnostics consult-lsp-symbols))
+
+(use-package! dap-mode
+  :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-ui-mode t))
+
+(use-package! ccls
+  :after projectile
+  :hook ((c-mode c++-mode objc-mode cuda-mode) . lsp-deferred)
+  :custom
+  (ccls-args nil)
+  (ccls-executable (executable-find "ccls"))
+  (projectile-project-root-files-top-down-recurring
+   (append '("complie_commands.json" ".ccls")
+           projectile-project-root-files-top-down-recurring))
+  :config
+  (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
+
+(use-package! google-c-style
+  :hook (((c-mode c++-mode ) . google-set-c-style)
+         (c-mode-common . google-make-newline-indent)))
+
+(use-package! cmake-mode
+  :hook (cmake-mode . lsp-deferred)
+  :mode ("CMakeLists\\.txt'" "\\.cmake\\'"))
+
+#+end_src
 ** Programming Language
-*** TODO C/C++
-*** TODO Python
-*** TODO Lisp Family
-The Lisp family contains =common lisp=, =scheme=, =racket=, =clojure= and =emacs lisp=.
 *** Rust
 **** Rustic
 Rustic is based on [[https://github.com/rust-lang/rust-mode][rust-mode]] and provides additional features:
@@ -695,7 +738,6 @@ Configuration code is tangled into config.el.
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
 #+end_src
-*** TODO LaTeX
 
 * AI
 ** TODO Code Completion
