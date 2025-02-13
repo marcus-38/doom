@@ -16,9 +16,15 @@
 
 (package! pulse)
 
+(package! winner)
+
+;(package! window)
+
 (package! autorevert)
 
 (package! whitespace)
+
+(package! org-present)
 
 (package! all-the-icons-dired)
 

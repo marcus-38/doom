@@ -40,6 +40,17 @@
                      other-window))
     (advice-add command :after #'pulse-line)))
 
+(use-package! winner
+  :hook after-init
+  :commands (winner-undo winner-redo)
+  :custom
+  (winner-boring-buffers '("*Completions*" "*Help*" "*Apropos*" "*Buffer List*" "*info*" "*Compile-Log*")))
+
+(use-package! window
+  :defer
+  :custom
+  (recenter-positions '(middle top bottom)))
+
 (use-package! autorevert
   :custom
   (global-auto-revert-mode))
@@ -84,6 +95,40 @@
                           " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
   (org-agenda-start-on-weedkay nil)
   )
+
+(use-package! org-present
+  :defer
+  :hook ((org-present-mode . my/org-present-start)
+         (org-present-mode-quit . my/org-present-end))
+  :config
+  (defun my/org-present-start ()
+    (setq-local face-remapping-alist '((default (:height 1.5) default)
+                                       (header-line (:height 4.0) header-line)
+                                       (org-document-title (:height 1.75) org-document-title)
+                                       (org-code org-verbatim)
+                                       (org-verbatim (:height 1.55) org-verbatim)
+                                       (org-block (:height 1.25) org-block)
+                                       (org-block-begin-line (:height 0.7) org-block)))
+    (setq header-line-format " ")
+    (org-display-inline-images)
+    (visual-fill-column-mode 1)
+    (visual-line-mode 1)
+    (read-only-mode))
+
+  (defun my/org-present-end ()
+    (setq-local face-remapping-alist '((default variable-pitch default)))
+    (setq header-line-format nil)
+    (org-remove-inline-images)
+    (visual-fill-column-mode -1)
+    (visual-line-mode -1)
+    (read-only-mode -1))
+
+  (defun my/org-present-prepare-slide (buffer-name heading)
+    (org-preview)
+    (org-show-entry)
+    (org-show-children))
+
+  (add-hook 'org-present-after-navigate-functions 'my/org-present-prepare-slide))
 
 (use-package! dired
   :hook ((dired-mode . dired-hide-details-mode)
