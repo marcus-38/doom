@@ -39,7 +39,6 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#org-tempo][Org Tempo]]
   - [[#org-agenda][Org Agenda]]
   - [[#org-roam][Org Roam]]
-  - [[#org-present][Org Present]]
 - [[#dired][Dired]]
 - [[#ibuffer][IBuffer]]
 - [[#programming][Programming]]
@@ -578,46 +577,6 @@ Just type =key= and press TAB to convert to =value=.
 #+end_src
 ** TODO Org Roam
 
-** Org Present
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-present)
-#+end_src
-#+begin_src emacs-lisp :tangle config.el
-(use-package! org-present
-  :defer
-  :hook ((org-present-mode . my/org-present-start)
-         (org-present-mode-quit . my/org-present-end))
-  :config
-  (defun my/org-present-start ()
-    (setq-local face-remapping-alist '((default (:height 1.5) default)
-                                       (header-line (:height 4.0) header-line)
-                                       (org-document-title (:height 1.75) org-document-title)
-                                       (org-code org-verbatim)
-                                       (org-verbatim (:height 1.55) org-verbatim)
-                                       (org-block (:height 1.25) org-block)
-                                       (org-block-begin-line (:height 0.7) org-block)))
-    (setq header-line-format " ")
-    (org-display-inline-images)
-    (visual-fill-column-mode 1)
-    (visual-line-mode 1)
-    (read-only-mode))
-
-  (defun my/org-present-end ()
-    (setq-local face-remapping-alist '((default variable-pitch default)))
-    (setq header-line-format nil)
-    (org-remove-inline-images)
-    (visual-fill-column-mode -1)
-    (visual-line-mode -1)
-    (read-only-mode -1))
-
-  (defun my/org-present-prepare-slide (buffer-name heading)
-    (org-preview)
-    (org-show-entry)
-    (org-show-children))
-
-  (add-hook 'org-present-after-navigate-functions 'my/org-present-prepare-slide))
-
-#+end_src
 * Dired
 #+begin_src emacs-lisp :tangle packages.el
 (package! all-the-icons-dired)

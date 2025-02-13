@@ -24,8 +24,6 @@
 
 (package! whitespace)
 
-(package! org-present)
-
 (package! all-the-icons-dired)
 
 (package! all-the-icons-ibuffer)
