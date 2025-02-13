@@ -40,6 +40,10 @@
                      other-window))
     (advice-add command :after #'pulse-line)))
 
+(use-package! autorevert
+  :custom
+  (global-auto-revert-mode))
+
 (map! :leader
       "W" #'my/windows-transient-window)
 

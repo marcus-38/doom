@@ -26,6 +26,8 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#line-numbers][Line Numbers]]
   - [[#parentheses][Parentheses]]
   - [[#pulse][Pulse]]
+- [[#misc-settings][Misc Settings]]
+  - [[#auto-revert][Auto revert]]
 - [[#key-bindings][Key Bindings]]
 - [[#org][Org]]
   - [[#org-settings][Org Settings]]
@@ -433,6 +435,19 @@ Pulse the current line where the point is.
                      other-window))
     (advice-add command :after #'pulse-line)))
 #+end_src
+
+* Misc Settings
+** Auto revert
+Auto refresh files when changed from disk.
+#+begin_src emacs-lisp :tangle packages.el
+(package! autorevert)
+#+end_src
+#+begin_src emacs-lisp :tangle config.el
+(use-package! autorevert
+  :custom
+  (global-auto-revert-mode))
+#+end_src
+
 * Key Bindings
 Adding some custom key bindings for my transient menues and useful stuff.
 |-------------+----------------------------------------|

@@ -16,4 +16,6 @@
 
 (package! pulse)
 
+(package! autorevert)
+
 (package! rustic)
