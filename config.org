@@ -25,6 +25,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
     - [[#spacemacs-theme][Spacemacs-theme]]
   - [[#line-numbers][Line Numbers]]
   - [[#parentheses][Parentheses]]
+  - [[#pulse][Pulse]]
 - [[#key-bindings][Key Bindings]]
 - [[#org][Org]]
   - [[#org-settings][Org Settings]]
@@ -409,6 +410,28 @@ Line number can be toogled by =SPC-t-l=. Possible types are:
 (setq blink-matching-paren 'jump
       show-paren-style 'mixed
       blink-matching-delay 1)
+#+end_src
+** Pulse
+Pulse the current line where the point is.
+#+begin_src emacs-lisp :tangle packages.el
+(package! pulse)
+#+end_src
+#+begin_src emacs-lisp :tangle config.el
+(use-package! pulse
+  :init
+  (defun pulse-line (&rest _)
+    "Pulse the current line"
+    (pulse-momentary-highlight-one-line (point)))
+  (dolist (command '(scroll-up-command
+                     scroll-down-command
+                     windmove-left
+                     windmove-right
+                     windmove-up
+                     windmove-down
+                     move-to-window-line-top-bottom
+                     recenter-top-bottom
+                     other-window))
+    (advice-add command :after #'pulse-line)))
 #+end_src
 * Key Bindings
 Adding some custom key bindings for my transient menues and useful stuff.

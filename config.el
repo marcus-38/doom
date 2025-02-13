@@ -24,6 +24,22 @@
       show-paren-style 'mixed
       blink-matching-delay 1)
 
+(use-package! pulse
+  :init
+  (defun pulse-line (&rest _)
+    "Pulse the current line"
+    (pulse-momentary-highlight-one-line (point)))
+  (dolist (command '(scroll-up-command
+                     scroll-down-command
+                     windmove-left
+                     windmove-right
+                     windmove-up
+                     windmove-down
+                     move-to-window-line-top-bottom
+                     recenter-top-bottom
+                     other-window))
+    (advice-add command :after #'pulse-line)))
+
 (map! :leader
       "W" #'my/windows-transient-window)
 

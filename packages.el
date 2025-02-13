@@ -14,4 +14,6 @@
 
 (package! spacemacs-theme)
 
+(package! pulse)
+
 (package! rustic)
