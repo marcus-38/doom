@@ -139,6 +139,16 @@
                        (ibuffer-do-sort-by-vc-status)
                        )
                      )))
+(setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("dired" (mode . dired-mode))
+               ("org" (mode . org-mode))
+               ("magit" (name ."^magit"))
+               ("planner" (or (name . "^\\*Calendar\\*$")
+                              (name . "^\\*Org Agenda\\*")))
+               ("emacs" (or (name . "^\\*scratch\\*$")
+                            (name . "^\\*Messages\\*$")))))))
+(add-hook 'ibuffer-mode-hook (lambda () (ibuffer-switch-to-saved-filter-groups "default")))
 
 (use-package! rustic
   :ensure
