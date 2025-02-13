@@ -18,4 +18,6 @@
 
 (package! autorevert)
 
+(package! whitespace)
+
 (package! rustic)

@@ -44,6 +44,9 @@
   :custom
   (global-auto-revert-mode))
 
+(use-package! whitespace
+  :hook (before-save . whitespace-cleanup))
+
 (map! :leader
       "W" #'my/windows-transient-window)
 

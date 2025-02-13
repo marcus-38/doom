@@ -28,6 +28,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#pulse][Pulse]]
 - [[#misc-settings][Misc Settings]]
   - [[#auto-revert][Auto revert]]
+  - [[#whitespace][Whitespace]]
 - [[#key-bindings][Key Bindings]]
 - [[#org][Org]]
   - [[#org-settings][Org Settings]]
@@ -435,7 +436,6 @@ Pulse the current line where the point is.
                      other-window))
     (advice-add command :after #'pulse-line)))
 #+end_src
-
 * Misc Settings
 ** Auto revert
 Auto refresh files when changed from disk.
@@ -447,7 +447,14 @@ Auto refresh files when changed from disk.
   :custom
   (global-auto-revert-mode))
 #+end_src
-
+** Whitespace
+#+begin_src emacs-lisp :tangle packages.el
+(package! whitespace)
+#+end_src
+#+begin_src emacs-lisp :tangle config.el
+(use-package! whitespace
+  :hook (before-save . whitespace-cleanup))
+#+end_src
 * Key Bindings
 Adding some custom key bindings for my transient menues and useful stuff.
 |-------------+----------------------------------------|
