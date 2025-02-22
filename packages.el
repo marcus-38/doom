@@ -38,3 +38,5 @@
 (package! google-c-style)
 
 (package! rustic)
+
+(package! shrface)

@@ -58,6 +58,10 @@
 (use-package! whitespace
   :hook (before-save . whitespace-cleanup))
 
+(map! :leader
+      :desc "Structure block"
+      "i b" #'org-insert-structure-template)
+
 (setq org-directory "~/Org/"
       my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively
@@ -211,3 +215,13 @@
   (when buffer-file-name
     (setq-local buffer-save-without-query t))
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
+
+(use-package! eww
+  :init (add-hook 'eww-after-render-hook #'shrface-mode))
+
+(use-package! shrface
+  :config
+  (shrface-basic)
+  (shrface-trial)
+  (shrface-default-keybindings)
+  (setq shrface-href-versatile t))

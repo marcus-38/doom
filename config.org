@@ -507,7 +507,11 @@ Auto refresh files when changed from disk.
   :hook (before-save . whitespace-cleanup))
 #+end_src
 * Key Bindings
-Fix it
+#+begin_src emacs-lisp :tangle config.el
+(map! :leader
+      :desc "Structure block"
+      "i b" #'org-insert-structure-template)
+#+end_src
 * Org
 ** Org Settings
 These are my personal org settings.
@@ -550,6 +554,8 @@ Just type =key= and press TAB to convert to =value=.
   (add-to-list 'org-structure-template-alist '("p" . "src python"))
   (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
   )
+
+
 #+end_src
 ** Org Agenda
 #+begin_src emacs-lisp
@@ -748,7 +754,22 @@ Configuration code is tangled into config.el.
 ** TODO Chat Function
 
 * Internet
-** TODO Browser
+** Browser
+#+begin_src emacs-lisp :tangle packages.el
+(package! shrface)
+#+end_src
+#+begin_src emacs-lisp :tangle config.el
+(use-package! eww
+  :init (add-hook 'eww-after-render-hook #'shrface-mode))
+
+(use-package! shrface
+  :config
+  (shrface-basic)
+  (shrface-trial)
+  (shrface-default-keybindings)
+  (setq shrface-href-versatile t))
+#+end_src
+
 ** TODO Mail
 ** Elfeed
 
