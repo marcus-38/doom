@@ -13,6 +13,8 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#install-terminal-apps][Install terminal Apps]]
   - [[#install-gui-apps][Install GUI Apps]]
   - [[#install-emacs][Install Emacs]]
+    - [[#install-doom-emacs][Install Doom Emacs]]
+    - [[#get-this-configuration][Get this configuration]]
   - [[#raycast-edits][Raycast Edits]]
 - [[#file-headers][File Headers]]
   - [[#initel][=init.el=]]
@@ -139,6 +141,21 @@ brew tap railwaycat/emacsport
 brew install emacs-plus --with-mailutils --with-imagemagick --with-native-comp --with-modern-papirus-icon
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 #+end_src
+*** Install Doom Emacs
+#+begin_src bash :tangle no
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+#+end_src
+*** Get this configuration
+#+begin_src bash :tangle no
+git clone https://github.com/marcus-38/doom ~/.doom.d
+#+end_src
+Next steps:
+- Start Emacs and load config.org
+- =SPC-.= or =C-x C-f= to load file
+- load *~/.doom.d/config.org*
+- generate the configuration files by running =C-c C-v t= to tangle
+- load the new configuration =SPC h r r= or =~/.config/emacs/bin/doom sync= in a terminal
 ** Raycast Edits
 - Change ⌘-Space to open raycast instead of spotlight
 - Set ⌘-e to open Emacs
