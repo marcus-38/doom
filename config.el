@@ -58,9 +58,6 @@
 (use-package! whitespace
   :hook (before-save . whitespace-cleanup))
 
-(map! :leader
-      "W" #'my/windows-transient-window)
-
 (setq org-directory "~/Org/"
       my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively

@@ -507,19 +507,7 @@ Auto refresh files when changed from disk.
   :hook (before-save . whitespace-cleanup))
 #+end_src
 * Key Bindings
-Adding some custom key bindings for my transient menues and useful stuff.
-|-------------+----------------------------------------|
-| Key binding | Function                               |
-|-------------+----------------------------------------|
-| SPC W       | Transient window for window management |
-|             |                                        |
-|-------------+----------------------------------------|
-
-#+begin_src emacs-lisp :tangle config.el
-(map! :leader
-      "W" #'my/windows-transient-window)
-#+end_src
-
+Fix it
 * Org
 ** Org Settings
 These are my personal org settings.
