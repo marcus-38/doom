@@ -507,6 +507,8 @@ Auto refresh files when changed from disk.
   :hook (before-save . whitespace-cleanup))
 #+end_src
 * Key Bindings
+My own keybindings that I like.
+
 #+begin_src emacs-lisp :tangle config.el
 (map! :leader
       :desc "Structure block"
