@@ -22,7 +22,8 @@ Next steps:
 - Start Emacs and load config.org
 - =SPC-.= or =C-x C-f= to load file
 - load ~/.config/doom/config.org
-- generate the configs by running =SPC h r r= or =~/.config/emacs/bin/doom sync= in the terminal.
+- generate the configs by running =C-c C-v t= to tangle all the files
+- load the new configuration =SPC h r r= or =~/.config/emacs/bin/doom sync= in the terminal
 * One configuration file
 See [[file:config.org][config.org]] for the source configuration file with some limited commentary. Work in progress...
 
