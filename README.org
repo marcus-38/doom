@@ -8,6 +8,21 @@ This is my personal configuration of doom emacs. If you found it, don't use it. 
 
 Here be dragons...
 
+* Install Doom Emacs
+#+begin_src sh
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+#+end_srch
+* Get my configuration
+#+begin_src sh
+rm -rf ~/.config/doom
+git clone https://github.com/marcus-38/doom ~/.config/doom
+#+end_srch
+Next steps:
+- Start Emacs and load config.org
+- =SPC-.= or =C-x C-f= to load file
+- load ~/.config/doom/config.org
+- generate the configs by running =SPC h r r= or =~/.config/emacs/bin/doom sync= in the terminal.
 * One configuration file
 See [[file:config.org][config.org]] for the source configuration file with some limited commentary. Work in progress...
 
