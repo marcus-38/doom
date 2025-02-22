@@ -60,8 +60,6 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
   - [[#consoles][Consoles]]
   - [[#operating-system][Operating System]]
   - [[#search][Search]]
-- [[#transient][Transient]]
-  - [[#menu-to-control-windows][Menu to control windows]]
 
 * References
 This configuration relly on other people's files and from other resources. My top go to places when looking for insperation and solutions are:
@@ -757,69 +755,3 @@ Configuration code is tangled into config.el.
 ** TODO Search
 Stuff like Ack, Ag, ripgrep, etc.
 
-* Transient
-** Menu to control windows
-#+begin_src emacs-lisp :tangle config.el
-(use-package! transient
-  :defer
-  :bind ("C-M-o" . my/windows-transient-window)
-  :init
-  (transient-define-prefix my/windows-transient-window ()
-   "Display a transient buffer showing useful window manipulation bindings."
-    [["Resize"
-     (")" "h+" enlarge-window-horizontally :transient t)
-     ("(" "h-" shrink-window-horizontally :transient t)
-     ("K" "v+" enlarge-window :transient t)
-     ("J" "v-" shrink-window :transient t)]
-     ["Split"
-    ("v" "vertical" (lambda ()
-       (interactive)
-       (split-window-right)
-       (windmove-right)) :transient t)
-    ("x" "horizontal" (lambda ()
-       (interactive)
-       (split-window-below)
-       (windmove-down)) :transient t)
-    ("wv" "win-vertical" (lambda ()
-       (interactive)
-       (select-window (split-window-right))
-       (windows-transient-window)) :transient nil)
-    ("wx" "win-horizontal" (lambda ()
-       (interactive)
-       (select-window (split-window-below))
-       (windows-transient-window)) :transient nil)]
-    ["Misc"
-     ("B" "switch buffer" (lambda ()
-                            (interactive)
-                            (consult-buffer)
-                            (windows-transient-window)))
-     ("z" "undo" (lambda ()
-                  (interactive)
-                  (winner-undo)
-                  (setq this-command 'winner-undo)) :transient t)
-    ("Z" "redo" winner-redo :transient t)
-    ("q" "exit menu" (lambda ()
-                       (interactive)
-                       (doom/escape)) :transient nil)
-    ]]
-    [["Move"
-    ("h" "←" windmove-left :transient t)
-    ("j" "↓" windmove-down :transient t)
-    ("l" "→" windmove-right :transient t)
-    ("k" "↑" windmove-up :transient t)]
-    ["Swap"
-    ("sh" "←" windmove-swap-states-left :transient t)
-    ("sj" "↓" windmove-swap-states-down :transient t)
-    ("sl" "→" windmove-swap-states-right :transient t)
-    ("sk" "↑" windmove-swap-states-up :transient t)]
-    ["Delete"
-    ("dh" "←" windmove-delete-left :transient t)
-    ("dj" "↓" windmove-delete-down :transient t)
-    ("dl" "→" windmove-delete-right :transient t)
-    ("dk" "↑" windmove-delete-up :transient t)
-    ("D" "This" delete-window :transient t)]
-    ]))
-#+end_src
-
-#+RESULTS:
-: my/windows-transient-window
