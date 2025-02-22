@@ -12,12 +12,12 @@ Here be dragons...
 #+begin_src sh
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
-#+end_srch
+#+end_src
 * Get my configuration
 #+begin_src sh
 rm -rf ~/.config/doom
 git clone https://github.com/marcus-38/doom ~/.config/doom
-#+end_srch
+#+end_src
 Next steps:
 - Start Emacs and load config.org
 - =SPC-.= or =C-x C-f= to load file
