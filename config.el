@@ -62,6 +62,10 @@
       :desc "Structure block"
       "i b" #'org-insert-structure-template)
 
+(map! :leader
+      :desc "Org"
+      "m" nil)
+
 (setq org-directory "~/Org/"
       my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively
@@ -72,6 +76,8 @@
 (use-package! org-tempo
   :config
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("ec" . "src emacs-lisp :tangle config.el"))
+  (add-to-list 'org-structure-template-alist '("ep" . "src emacs-lisp :tangle packages.el"))
   (add-to-list 'org-structure-template-alist '("p" . "src python"))
   (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
   )
