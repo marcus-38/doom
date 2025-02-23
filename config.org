@@ -61,7 +61,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
 - [[#multimedia][Multimedia]]
 - [[#finance][Finance]]
 - [[#integrations-13][Integrations]]
-  - [[#x-todo-b-consoles][[X] TODO [#B] Consoles]]
+  - [[#x-todo-b-co-nsoles][[X] TODO [#B] Co nsoles]]
   - [[#--todo-c-operating-system][[ ] TODO [#C] Operating System]]
   - [[#--todo-search][[ ] TODO Search]]
 
@@ -790,7 +790,7 @@ Configuration code is tangled into config.el.
 * TODO Multimedia
 * TODO [#A] Finance
 * Integrations [1/3]
-** [X] TODO [#B] Consoles
+** [X] TODO [#B] Co nsoles
 ** [ ] TODO [#C] Operating System
 ** [ ] TODO Search
 Stuff like Ack, Ag, ripgrep, etc.
