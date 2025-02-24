@@ -52,8 +52,6 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
       - [[#rustic][Rustic]]
 - [[#ai][AI]]
   - [[#code-completion][Code Completion]]
-  - [[#ai-assistant-programming][AI Assistant Programming]]
-  - [[#chat-function][Chat Function]]
 - [[#internet][Internet]]
   - [[#browser][Browser]]
   - [[#mail][Mail]]
@@ -150,12 +148,12 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 #+end_src
 *** Get this configuration
 #+begin_src bash :tangle no
-git clone https://github.com/marcus-38/doom ~/.doom.d
+git clone https://github.com/marcus-38/doom ~/.config/doom
 #+end_src
 Next steps:
 - Start Emacs and load config.org
 - =SPC-.= or =C-x C-f= to load file
-- load *~/.doom.d/config.org*
+- load *~/.config/doom/config.org*
 - generate the configuration files by running =C-c C-v t= to tangle
 - load the new configuration =SPC h r r= or =~/.config/emacs/bin/doom sync= in a terminal
 ** Raycast Edits
@@ -265,7 +263,7 @@ This controls which Doom modules are enabled and what order they load in. Rememb
        ;;unicode           ; extended unicode support for various languages
        (vc-gutter +pretty) ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       ;;window-select     ; visually switch windows
+       window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
        ;;zen               ; distraction-free coding or writing
 
@@ -304,7 +302,7 @@ This controls which Doom modules are enabled and what order they load in. Rememb
 
        :tools
        ;;ansible
-       ;;biblio            ; Writes a PhD for you (citation needed)
+       biblio            ; Writes a PhD for you (citation needed)
        ;;collab            ; buffers with friends
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
@@ -548,7 +546,7 @@ My own keybindings that I like.
 These are my personal org settings.
 #+begin_src emacs-lisp :tangle config.el
 (setq org-directory "~/Org/"
-      my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
+      my-agenda-dirs '("~/.config/doom" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively
                                             (expand-file-name x org-directory)
                                             "\.org$"))
@@ -764,9 +762,6 @@ Configuration code is tangled into config.el.
 
 * AI
 ** TODO Code Completion
-** TODO AI Assistant Programming
-** TODO Chat Function
-
 * Internet
 ** Browser
 #+begin_src emacs-lisp :tangle packages.el

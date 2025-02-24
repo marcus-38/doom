@@ -67,7 +67,7 @@
       "m" nil)
 
 (setq org-directory "~/Org/"
-      my-agenda-dirs '("~/.doom.d" "~/Org") ; add more directories to look for agenda entries
+      my-agenda-dirs '("~/.config/doom" "~/Org") ; add more directories to look for agenda entries
       org-agenda-files (mapcan (lambda (x) (directory-files-recursively
                                             (expand-file-name x org-directory)
                                             "\.org$"))
