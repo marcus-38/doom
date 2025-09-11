@@ -67,7 +67,7 @@ This configuration relly on other people's files and from other resources. My to
 - [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs]]
 
 * Setup and Install
-I'm currently using a Apple MacBook Pro. If you are on other hardware you need to adapt this configuration for your needs. This is mostly for myself when setting up a new Mac.
+I'm currently using an Apple MacBook Pro or a Dell XPS. If you are on other hardware you need to adapt this configuration for your needs.
 
 ** Install Brew
 Download install script for brew.
