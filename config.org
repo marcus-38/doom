@@ -25,6 +25,7 @@ This file is written in [[https://leanpub.com/lit-config][literate programming s
 - [[#ui-settings][UI Settings]]
   - [[#theme][Theme]]
     - [[#spacemacs-theme][Spacemacs-theme]]
+  - [[#initial-buffer-choice][Initial buffer choice]]
   - [[#line-numbers][Line Numbers]]
   - [[#parentheses][Parentheses]]
   - [[#pulse][Pulse]]
@@ -238,7 +239,7 @@ This controls which Doom modules are enabled and what order they load in. Rememb
        :ui
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
-       doom-dashboard    ; a nifty splash screen for Emacs
+       ;; doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;(emoji +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
@@ -420,6 +421,10 @@ Spacemacs theme is an Emacs color theme that started as a theme for [[https://gi
 (package! spacemacs-theme)
 #+end_src
 
+** Initial buffer choice
+#+begin_src emacs-lisp :tangle config.el
+(setq initial-buffer-choice 'eshell)
+#+end_src
 ** Line Numbers
 Line number can be toogled by =SPC-t-l=. Possible types are:
 - =t=: regular line numbers

@@ -18,6 +18,8 @@
 ;;(setq doom-theme 'doom-one)
 (setq doom-theme 'doom-nord-aurora)
 
+(setq initial-buffer-choice 'eshell)
+
 (setq display-line-number-type t)
 
 (setq blink-matching-paren 'jump
