@@ -65,6 +65,10 @@
       :desc "comment line"
       "-" #'comment-line)
 
+(setq select-enable-clipboard nil)
+(map! "S-C-c" #'clipboard-kill-ring-save)
+(map! "S-C-v" #'clipboard-yank)
+
 (map! :leader
       :desc "Org"
       "m" nil)

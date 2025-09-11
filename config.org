@@ -536,6 +536,10 @@ My own keybindings that I like.
 (map! :leader
       :desc "comment line"
       "-" #'comment-line)
+
+(setq select-enable-clipboard nil)
+(map! "S-C-c" #'clipboard-kill-ring-save)
+(map! "S-C-v" #'clipboard-yank)
 #+end_src
 ** Rename 'm' from <leaderkey> to 'Org'
 #+begin_src emacs-lisp :tangle config.el
