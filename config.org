@@ -67,7 +67,7 @@ This configuration relly on other people's files and from other resources. My to
 - [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs]]
 
 * Setup and Install
-I'm currently using a Apple MacBook Pro M2 Max. If you are on other hardware you need to adapt this configuration for your needs. This is mostly for myself when setting up a new Mac.
+I'm currently using a Apple MacBook Pro. If you are on other hardware you need to adapt this configuration for your needs. This is mostly for myself when setting up a new Mac.
 
 ** Install Brew
 Download install script for brew.
@@ -345,7 +345,7 @@ This controls which Doom modules are enabled and what order they load in. Rememb
        ;;(go +lsp)         ; the hipster dialect
        ;;(graphql +lsp)    ; Give queries a REST
        ;;(haskell +lsp)    ; a language that's lazier than I am
-       ;;hy                ; readability of scheme w/ speed of python
+       ;; hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
        (java +lsp)       ; the poster child for carpal tunnel syndrome
