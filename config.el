@@ -61,6 +61,9 @@
 (map! :leader
       :desc "Structure block"
       "i b" #'org-insert-structure-template)
+(map! :leader
+      :desc "comment line"
+      "-" #'comment-line)
 
 (map! :leader
       :desc "Org"

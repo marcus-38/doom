@@ -527,13 +527,15 @@ My own keybindings that I like.
 | SPC i b s s | #+begin_src                                |
 | SPC i b s h | #+begin_src sh                             |
 | SPC i b v   | #+begin_verse                              |
-|             |                                            |
 |-------------+--------------------------------------------|
 
 #+begin_src emacs-lisp :tangle config.el
 (map! :leader
       :desc "Structure block"
       "i b" #'org-insert-structure-template)
+(map! :leader
+      :desc "comment line"
+      "-" #'comment-line)
 #+end_src
 ** Rename 'm' from <leaderkey> to 'Org'
 #+begin_src emacs-lisp :tangle config.el
