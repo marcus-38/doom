@@ -3,7 +3,7 @@
 
 This is my personal Doom Emacs configuration. From this org-file all the necessary configuration files are generated.
 
-This file is written in [[https://leanpub.com/lit-config][literate programming style]] using [[https://orgmode.org/][org-mode]]. See [[file:init.el][init.el]], [[file:packages.el][packages.el]] and [[file:config.el][config.el]] for the generated files. The elisp files are automatically generated (tangled) when this document is saved. To reload, use =doom sync= in a terminal or =SPC-h-r-r= in emacs.
+This file is written in [[https://leanpub.com/lit-config][literate programming style]] using [[https://orgmode.org/][org-mode]]. See [[file:init.el][init.el]], [[file:packages.el][packages.el]] and [[file:config.el][config.el]] for the generated files. The elisp files are automatically generated (tangled) when this document is saved. To reload, use =doom sync= in a terminal or =SPC-h-r-r= in emacs. Mer text
 
 * Table of Contents :TOC_4:
 - [[#references][References]]
