@@ -66,6 +66,9 @@
 (map! :leader
       :desc "comment line"
       "-" #'comment-line)
+(map! :leader
+      :desc "soft-wrap lines"
+      "V" #'visual-line-mode)
 
 (setq select-enable-clipboard nil)
 (map! "S-C-c" #'clipboard-kill-ring-save)
